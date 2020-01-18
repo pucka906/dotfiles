@@ -46,6 +46,9 @@ if [ "$choice" = "y" -o "Y" ]; then
 	mv -v ./dotfiles/{.[!.],}* ./
 	rm -r dotfiles/
 
+	mkdir .vim/autoload/ .vim/plugged/
+	curl -o .vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 	echo "Installing shell initializer ..."
 	. "$HOME/.dotfiles/initializer.sh"
 	echo "Done!"

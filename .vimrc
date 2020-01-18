@@ -1,4 +1,15 @@
 " -------------------------
+" PLUGINS
+" -------------------------
+
+call plug#begin()
+
+" NERDtree github: https://github.com/preservim/nerdtree
+Plug 'preservim/nerdtree'
+
+call plug#end()
+
+" -------------------------
 " BASIC SETTINGS  
 " -------------------------
 
@@ -11,6 +22,12 @@ set noswapfile
 set confirm
 
 set tabstop=4 "8 default"
+
+map <C-n> :NERDTreeToggle<CR>
+" ctrl + n  open NERDTree
+
+" open a NERDTree automatically when vim starts up
+" autocmd vimenter * NERDTree
 
 " -------------------------
 " COLORSCHEME, TEXT
