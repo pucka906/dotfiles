@@ -30,7 +30,7 @@ git --version
 
 echo "Successfully!"
 echo "The following NEW directory will be installed: ~/.dotfiles"
-echo "This will be added in ~/:  .bash_aliases .vimrc .vim"
+echo "This will be added in ~/: .bash_aliases .vimrc .vim"
 echo "Do you want to continue? [y/n]"
 
 read choice
@@ -50,11 +50,9 @@ if [ "$choice" = "y" -o "Y" ]; then
 	curl -o .vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	echo "Installing shell initializer ..."
-	if [ -e "$HOME/.dotfiles" ]; then
-    	ln -sfv $HOME/.dotfiles/.bash_aliases $HOME
-    	ln -sfv $HOME/.dotfiles/.vim $HOME
-    	ln -sfv $HOME/.dotfiles/.vimrc $HOME
-	fi
+	ln -sfv $HOME/.dotfiles/.bash_aliases $HOME
+	ln -sfv $HOME/.dotfiles/.vim $HOME
+	ln -sfv $HOME/.dotfiles/.vimrc $HOME
 	echo "Done!"
 	cd $s
 else
