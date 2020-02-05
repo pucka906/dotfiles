@@ -10,6 +10,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias apt='sudo apt'
 alias cls='clear'
 
+alias v='vim'
+alias sv='sudo vim'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

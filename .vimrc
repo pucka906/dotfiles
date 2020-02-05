@@ -22,9 +22,19 @@ set noswapfile
 set confirm
 
 set tabstop=4 "8 default"
+set shiftwidth=4
+
+" search
+set hlsearch
+set incsearch
+
+let g:NERDTreeWinPos = "right"
 
 map <C-n> :NERDTreeToggle<CR>
 " ctrl + n  open NERDTree
+
+map <C-b> :NERDTreeFocus<CR>
+" ctrl + b
 
 " open a NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
