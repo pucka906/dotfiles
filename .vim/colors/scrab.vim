@@ -7,11 +7,10 @@
 " `8888Y'  `Y88P' 88   YD YP   YP Y8888P'                                       
 "
 " -------------------------------------------------------------
-" File:				scrab.vim
-" Description: 		aaa
-" Author:			pucka
-" Source:			github.com/pucka906/scrab.vim
-" Last Modified:	15.02.2020
+" File:             scrab.vim
+" Description:      aaa
+" Author:           pucka
+" Last Modified:    15.02.2020
 " -------------------------------------------------------------
 
 " ------------------------------- "
