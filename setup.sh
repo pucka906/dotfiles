@@ -35,7 +35,7 @@ echo "Do you want to continue? [y/n]"
 
 read choice
 
-if [ "$choice" = "y" -o "Y" ]; then
+if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 	echo "Creating the directory ..."
 	mkdir -p "$HOME/.dotfiles"
 	echo "Cloning a repository ..."
@@ -63,13 +63,14 @@ echo "Install and update apt packages? [y/n]"
 
 read choice
 
-if [ "$choice" = "y" -o "Y" ]; then
+if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 
 	echo "Package Installation ..."
 
 	# packages
 	apt-get install -y vim
 	apt-get install -y htop
+	apt-get install -y irssi
 
 	# update && upgrade
 	apt-get update
@@ -77,4 +78,6 @@ if [ "$choice" = "y" -o "Y" ]; then
 	apt-get autoremove
 
 	echo "Done!"
+else
+	echo "ABORT!"
 fi

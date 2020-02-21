@@ -1,90 +1,108 @@
+"
+" .d8888.  .o88b. d8888b.  .d8b.  d8888b. 
+" 88'  YP d8P  Y8 88  `8D d8' `8b 88  `8D 
+" `8bo.   8P      88oobY' 88ooo88 88oooY' 
+"   `Y8b. 8b      88`8b   88~~~88 88~~~b. 
+" db   8D Y8b  d8 88 `88. 88   88 88   8D 
+" `8888Y'  `Y88P' 88   YD YP   YP Y8888P'                                       
+"
 " -------------------------------------------------------------
-" File: scrab.vim
-" Description:
-" Author: pucka
-" Source: none
-" Last Modified: 16.12.2019
+" File:				scrab.vim
+" Description: 		aaa
+" Author:			pucka
+" Source:			github.com/pucka906/scrab.vim
+" Last Modified:	15.02.2020
 " -------------------------------------------------------------
-
-highlight clear
-if exists("syntax_on")
-	syntax reset
-endif
 
 " ------------------------------- "
 " SETTING
 " ------------------------------- "
+
+highlight clear
+
+if exists("syntax_on")
+	syntax reset
+endif
+
 set background=dark
-let g:colors_name="scrab"
+let g:colors_name = "scrab"
 
 " ------------------------------- "
 " FUNCTION 
 " ------------------------------- "
-function! HL(group, guibg, guifg, gui, ctermbg, ctermfg)
-  let highlightstr = 'highlight ' . a:group . ' '
-  let highlightstr .= 'guibg=' . a:guibg . ' '
-  let highlightstr .= 'guifg=' . a:guifg . ' '
-  let highlightstr .= 'gui=' . a:gui . ' '
-  let highlightstr .= 'ctermbg=' . a:ctermbg . ' '
-  let highlightstr .= 'ctermfg=' . a:ctermfg . ' '
-  let highlightstr .= 'cterm=' . a:gui . ' '
 
-  execute highlightstr
+function! HI(group, ctermbg, ctermfg, guibg, guifg, gui)
+	let histr = 'highlight ' . a:group . ' '
+	let histr .= 'ctermbg=' . a:ctermbg . ' '
+	let histr .= 'ctermfg=' . a:ctermfg . ' '
+	let histr .= 'cterm=' . a:gui . ' '
+	let histr .= 'guibg=' . a:guibg . ' '
+	let histr .= 'guifg=' . a:guifg . ' '
+	let histr .= 'gui=' . a:gui . ' '
+
+	execute histr
 endfunction
 
 " ------------------------------- "
 " COLORS
 " ------------------------------- "
 
-call HL("Normal", "#262626", "#ffd7af", "NONE", "235", "223")
+if &t_Co == 256 || has("gui_running")
+	call HI( "Normal",          "235", "223", "#262626", "#ffd7af", "NONE" )		" normal text
+	call HI( "NonText",         "NONE", "142", "NONE", "#afaf00", "NONE" )			" characters that do not really exist in the text
+	call HI( "Comment",         "NONE", "240", "NONE", "#585858", "italic" )		" any comment
 
-call HL("Comment", "NONE", "#8a8a8a", "italic", "NONE", "245")       " any comment
+	call HI( "Constant",        "NONE", "175", "NONE", "#d787af", "NONE" )			" any constant
+	call HI( "String",          "NONE", "142", "NONE", "#afaf00", "NONE" )			" a string constant: 'this is a stirng'
+	call HI( "Character",       "NONE", "175", "NONE", "#d787af", "NONE" )			" a character constant: 'c', '\n'
+	call HI( "Number",          "NONE", "175", "NONE", "#d787af", "NONE" )			" a number constant: 234, 0xff
+	call HI( "Boolean",         "NONE", "175", "NONE", "#d787af", "NONE" )			" a boolean constant: TRUE, false
+	call HI( "Float",           "NONE", "175", "NONE", "#d787af", "NONE" )			" a floating point constant: 2.3e10
 
-call HL("Constant", "NONE", "#d787af", "NONE", "NONE", "175")        " any constant
-call HL("String", "NONE", "#afaf00", "NONE", "NONE", "142")          " a string constant: 'this is a stirng'
-call HL("Character", "NONE", "#d787af", "NONE", "NONE", "175")       " a character constant: 'c', '\n'
-call HL("Number", "NONE",  "#d787af", "NONE", "NONE", "175")         " a number constant: 234, 0xff
-call HL("Boolean", "NONE", "#d787af", "NONE", "NONE", "175")         " a boolean constant: TRUE, false
-call HL("Float", "NONE", "#d787af", "NONE", "NONE", "175")           " a floating point constant: 2.3e10
+	call HI( "Identifier",      "NONE", "223", "NONE", "#ffd7af", "NONE" )			" any variable name
+	call HI( "Function",        "NONE", "142", "NONE", "#afaf00", "bold" )			" function name (also: methods for classes)
 
-call HL("Identifier", "NONE", "#87afaf", "NONE", "NONE", "109")      " any variable name
-call HL("Function", "NONE", "#afaf00", "bold", "NONE", "142")        " function name (also: methods for classes)
+	call HI( "Statement",       "NONE", "167", "NONE", "#d75f5f", "NONE" )			" any statement
+	call HI( "Conditional",     "NONE", "167", "NONE", "#d75f5f", "NONE" )			" if, then, else, endif, switch, etc.
+	call HI( "Repeat",          "NONE", "167", "NONE", "#d75f5f", "NONE" )			" for, do, while, etc.
+	call HI( "Label",           "NONE", "167", "NONE", "#d75f5f", "NONE" )			" case, default, etc.
+	call HI( "Operator",        "NONE", "223", "NONE", "#ffd7af", "NONE" )			" 'sizeof', '+', '*', etc.
+	call HI( "Keyword",         "NONE", "167", "NONE", "#d75f5f", "NONE" )			" any other keyword
+	call HI( "Exception",       "NONE", "167", "NONE", "#d75f5f", "NONE" )			" try, catch, throw
 
-call HL("Statement", "NONE", "#d75f5f", "NONE", "NONE", "167")       " any statement
-call HL("Conditional", "NONE", "#d75f5f", "NONE", "NONE", "167")     " if, then, else, endif, switch, etc.
-call HL("Repeat", "NONE", "#d75f5f", "NONE", "NONE", "167")          " for, do, while, etc.
-call HL("Label", "NONE", "#d75f5f", "NONE", "NONE", "167")           " case, default, etc.
-call HL("Operator", "NONE", "#ffd7af", "NONE", "NONE", "223")        " 'sizeof', '+', '*', etc.
-call HL("Keyword", "NONE", "#d75f5f", "NONE", "NONE", "167")         " any other keyword
-call HL("Exception", "NONE", "#d75f5f", "NONE", "NONE", "167")       " try, catch, throw
+	call HI( "PreProc",         "NONE", "108", "NONE", "#87af87", "NONE" )			" generic Preprocessor
+	call HI( "Include",         "NONE", "108", "NONE", "#87af87", "NONE" )			" preprocessor #include
+	call HI( "Define",          "NONE", "108", "NONE", "#87af87", "NONE" )			" preprocessor #define
+	call HI( "Macro",           "NONE", "108", "NONE", "#87af87", "NONE" )			" same as Define
+	call HI( "PreCondit",       "NONE", "108", "NONE", "#87af87", "NONE" )			" preprocessor #if, #else, #endif, etc.
 
-call HL("PreProc", "NONE", "#87af87", "NONE", "NONE", "108")         " generic Preprocessor
-call HL("Include", "NONE", "#87af87", "NONE", "NONE", "108")         " preprocessor #include
-call HL("Define", "NONE", "#87af87", "NONE", "NONE", "108")          " preprocessor #define
-call HL("Macro", "NONE", "#87af87", "NONE", "NONE", "108")           " same as Define
-call HL("PreCondit", "NONE", "#87af87", "NONE", "NONE", "108")       " preprocessor #if, #else, #endif, etc.
+	call HI( "Type",            "NONE", "214", "NONE", "#ffaf00", "NONE" )			" int, long, char, etc.
+	call HI( "StorageClass",    "NONE", "208", "NONE", "#ff8700", "NONE" )			" static, register, volatile, etc.
+	call HI( "Structure",       "NONE", "108", "NONE", "#87af87", "NONE" )			" struct, union, enum, etc.
+	call HI( "Typedef",         "NONE", "214", "NONE", "#ffaf00", "NONE" )			" a typedef
 
-call HL("Type", "NONE", "#ffaf00", "NONE", "NONE", "214")            " int, long, char, etc.
-call HL("StorageClass", "NONE", "#ff8700", "NONE", "NONE", "208")    " static, register, volatile, etc.
-call HL("Structure", "NONE", "#87af87", "NONE", "NONE", "108")       " struct, union, enum, etc.
-call HL("Typedef", "NONE", "#ffaf00", "NONE", "NONE", "214")         " A typedef
+	call HI( "Special",         "NONE", "208", "NONE", "#ff8700", "NONE" )			" any special symbol: \n, \t
+	call HI( "SpecialChar",     "NONE", "208", "NONE", "#ff8700", "NONE" )			" special character in a constant
+	call HI( "Tag",             "NONE", "108", "NONE", "#87af87", "NONE" )			" you can use CTRL-] on this
+	call HI( "Delimiter",       "NONE", "248", "NONE", "#a8a8a8", "NONE" )			" character that needs attention 
+	call HI( "SpecialComment",  "NONE", "248", "NONE", "#a8a8a8", "NONE" )			" special things inside a comment
 
-call HL("Special", "NONE", "#ff8700", "NONE", "NONE", "208")         " any special symbol
-call HL("SpecialChar", "NONE", "#ff8700", "NONE", "NONE", "208")     " special character in a constant
-call HL("Tag", "NONE", "#87af87", "NONE", "NONE", "108")             " you can use CTRL-] on this
-call HL("Delimiter", "NONE", "#a8a8a8", "NONE", "NONE", "248" )      " character that needs attention
-call HL("SpecialComment", "NONE", "#a8a8a8", "NONE", "NONE", "248")  " special things inside a comment
-call HL("Debug", "NONE", "#a8a8a8", "NONE", "NONE", "248")           " debugging statements
+	call HI( "Debug",           "NONE", "248", "NONE", "#a8a8a8", "NONE" )			" debugging statements
+	call HI( "Underlined",      "NONE", "109", "NONE", "#87afaf", "underline" )		" text that stands out, HTML links
+	call HI( "Ignore",          "NONE", "240", "NONE", "#585858", "NONE" )			" left blank, hidden
+	call HI( "Error",           "160", "255", "#d70000", "#eeeeee", "bold" )		" any erroneous construct
+	call HI( "Todo",            "NONE", "246", "NONE", "#949494", "italic" )		" anything that needs extra attention; mostly. the keywords TODO FIXME and XXX
 
-call HL("Underlined", "NONE", "#87afaf", "underline", "NONE", "109") " text that stands out, HTML links
-call HL("Ignore", "NONE", "#d787af", "NONE", "NONE", "175")          " left blank, hidden  |hl-Ignore|
-call HL("Error", "NONE", "#d70000", "bold", "NONE", "160")           " any erroneous construct
-call HL("Todo", "NONE", "#ffd7af", "bold", "NONE", "223")            " anything that needs extra attention; mostly. the keywords TODO FIXME and XXX
+	call HI( "LineNr",          "NONE", "240", "NONE", "#585858", "NONE" )			" line number
+	call HI( "CursorLineNr",    "NONE", "190", "NONE", "#d7ff00", "NONE" )			" line number when cursor 
 
-call HL("LineNr", "NONE", "#585858", "NONE", "NONE", "240")          " line number for ':number' and ':#' commands.
-call HL("CursorLineNr", "NONE", "#d7ff00", "NONE", "NONE", "190")    " like LineNr when 'cursorline' is set.
+	call HI( "DiffAdd",         "NONE", "178", "NONE", "#d7af00", "NONE" )			" added line
+	call HI( "DiffDelete",      "NONE", "196", "NONE", "#ff0000", "NONE" )			" deleted line
+	call HI( "DiffChange",      "NONE", "NONE", "NONE", "NONE", "NONE" )			" changed line
+	call HI( "DiffText",        "NONE", "178", "NONE", "#d7af00", "NONE" )			" changed text within a changed line
 
-call HL("NonText", "NONE", "#afaf00", "NONE", "NONE", "142")         "  
-
-call HL("ModeMsg", "NONE", "#d7ff00", "bold", "NONE", "190")         " 'showmode' message (e.g., '-- INSERT --')
-call HL("MoreMsg", "NONE", "#d7ff00", "NONE", "NONE", "190")         " other prompt
+	call HI( "WarningMsg",      "184", "0", "#d7d700", "#000000", "NONE" )			" warning messages
+	call HI( "ErrorMsg",        "160", "255", "#d70000", "#eeeeee", "NONE" )		" error messages
+	call HI( "ModeMsg",         "NONE", "190", "NONE", "#d7ff00", "bold" )			" e.g., '-- INSERT --'
+	call HI( "MoreMsg",         "NONE", "190", "NONE", "#d7ff00", "NONE" )			" other prompt
+endif
