@@ -60,7 +60,7 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 
 	for item in ${FILES[*]}; do
 		if [ -f "$HOME/$item" ]; then
-			mv -r $HOME/$item $HOME/.dotfiles/backup/
+			mv $HOME/$item $HOME/.dotfiles/backup/
 		fi
 	done
 
@@ -68,7 +68,7 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 
 	echo "Initialize file copy ..."
 	for item in ${FILES[*]}; do
-		cp -v $HOME/.dotfiles/$item $HOME
+		cp -vr $HOME/.dotfiles/$item $HOME
 	done
 
 	echo "Done!"
