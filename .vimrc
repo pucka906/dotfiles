@@ -19,16 +19,17 @@ set ruler
 set autoindent
 
 set noswapfile
+set nobackup
 set confirm
 
-set tabstop=4 "8 default"
+set tabstop=4 	"8 default"
 set shiftwidth=4
 
-" search
-set hlsearch
+set encoding=utf8
+
+set hlsearch	" search
 set incsearch
 
-let g:NERDTreeWinPos = "right"
 
 map <C-n> :NERDTreeToggle<CR>
 " ctrl + n  open NERDTree
@@ -40,13 +41,17 @@ map <C-b> :NERDTreeFocus<CR>
 " autocmd vimenter * NERDTree
 
 " -------------------------
-" COLORSCHEME, TEXT
+" VARIABLES
+" -------------------------
+
+let g:NERDTreeWinPos = "right"
+
+" -------------------------
+" COLORSCHEME
 " -------------------------
 
 syntax enable
 colorscheme scrab
-
-set encoding=utf8
 
 " -------------------------
 " CURSOR

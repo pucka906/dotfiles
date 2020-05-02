@@ -49,7 +49,7 @@ endfunction
 if &t_Co == 256 || has("gui_running")
 	call HI( "Normal",          "235", "223", "#262626", "#ffd7af", "NONE" )		" normal text
 	call HI( "NonText",         "NONE", "142", "NONE", "#afaf00", "NONE" )			" characters that do not really exist in the text
-	call HI( "Comment",         "NONE", "240", "NONE", "#585858", "italic" )		" any comment
+	call HI( "Comment",         "NONE", "240", "NONE", "#585858", "NONE" )			" any comment
 
 	call HI( "Constant",        "NONE", "175", "NONE", "#d787af", "NONE" )			" any constant
 	call HI( "String",          "NONE", "142", "NONE", "#afaf00", "NONE" )			" a string constant: 'this is a stirng'
@@ -58,7 +58,7 @@ if &t_Co == 256 || has("gui_running")
 	call HI( "Boolean",         "NONE", "175", "NONE", "#d787af", "NONE" )			" a boolean constant: TRUE, false
 	call HI( "Float",           "NONE", "175", "NONE", "#d787af", "NONE" )			" a floating point constant: 2.3e10
 
-	call HI( "Identifier",      "NONE", "223", "NONE", "#ffd7af", "NONE" )			" any variable name
+	call HI( "Identifier",      "NONE", "109", "NONE", "#87afaf", "NONE" )			" any variable name
 	call HI( "Function",        "NONE", "142", "NONE", "#afaf00", "bold" )			" function name (also: methods for classes)
 
 	call HI( "Statement",       "NONE", "167", "NONE", "#d75f5f", "NONE" )			" any statement
