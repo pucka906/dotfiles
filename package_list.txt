@@ -2,7 +2,13 @@ vim
 htop
 tree
 tar
+zip
+unzip
 git
 wget
 curl
+feh
+fzf
+figlet
 neofetch
+gcc

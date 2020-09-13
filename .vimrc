@@ -7,6 +7,9 @@ call plug#begin()
 " NERDtree github: https://github.com/preservim/nerdtree
 Plug 'preservim/nerdtree'
 
+" fzf.vim github: https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 " -------------------------
@@ -22,7 +25,7 @@ set noswapfile
 set nobackup
 set confirm
 
-set tabstop=4 	"8 default"
+set tabstop=4 	" 8 default
 set shiftwidth=4
 
 set encoding=utf8
